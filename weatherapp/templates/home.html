@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+
+  {% load static %}
+
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Weather Forecasting</h1>
+
+    <form method="POST">
+      {% csrf_token %}
+      <input type="text" placeholder="Enter City" name="city" required>
+      <br>
+      <button type="submit">Search</button>
+    </form>
+
+    <!-- Weather Data Section -->
+    <div class="weather-info">
+      <div class="weather-data">
+        <h2>{{ city_name }}</h2>
+        <h3>{{ description }}</h3>
+        <h4>{{ temp }}°C</h4>
+        <h5>{{ day }}</h5>
+      </div>
+
+      <!-- Weather Icon -->
+      <div class="weather-icon">
+        <img src="https://openweathermap.org/img/w/{{ icon }}.png" width="100px" alt="weather icon">
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
